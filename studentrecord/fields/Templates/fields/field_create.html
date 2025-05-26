@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Field</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6dd5ed, #2193b0);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            color: #1a2b4c;
+        }
+
+        h2 {
+            color: #0d3b66;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-top: 15px;
+            color: #123c69;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 6px;
+            border: 1px solid #bcd2ee;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 15px;
+            background-color: #f2f9ff;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #2193b0;
+            outline: none;
+            background-color: #e8f4fc;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            background-color: #0d6efd;
+            color: #ffffff;
+            border: none;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #094db1;
+        }
+
+        a {
+            color: #084298;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <h2>Create Student Record</h2>
+        {% csrf_token %}
+        <label>Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Age:</label>
+        <input type="number" name="age" min="0" required>
+
+        <label>Classname:</label>
+        <input type="text" name="classname" required>
+
+        <label>Marks:</label>
+        <input type="number" name="marks" min="0" max="100" required>
+
+        <button type="submit">Create</button>
+        <a href="{% url 'fields:field_list' %}">Back to List</a>
+    </form>
+</body>
+</html>
